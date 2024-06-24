@@ -1,0 +1,76 @@
+<div *ngIf="!loading" class="container">
+  <mat-toolbar>
+      <span>Clientes</span>
+  </mat-toolbar>
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+  <mat-card>
+
+    <div>
+
+      <mat-form-field appearanc="standard">
+        <mat-label>Filtro</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="buscar" #input autocomplete="off">
+      </mat-form-field>
+
+      <button (click)="addEditClient()" mat-raised-button color="primary">Agregar</button>
+
+      <div  class="mat-elevation-z8">
+
+        <table mat-table [dataSource]="dataSource" matSort>
+
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="lastname">
+            <th mat-header-cell *matHeaderCellDef> Apellido </th>
+            <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef> Teléfono </th>
+            <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="active">
+            <th mat-header-cell *matHeaderCellDef> Estado </th>
+            <td mat-cell *matCellDef="let element"> {{element.active == 1?'Activo':'Inactivo'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="acciones">
+              <th mat-header-cell *matHeaderCellDef>Acciones</th>
+              <td mat-cell *matCellDef="let element; let i = index" style="text-align: rigth;">
+
+                  <mat-icon (click)="editUsuario(element)" class="btnEdit" matTooltip="Editar">edit</mat-icon>
+
+                  <mat-icon (click)="deleteClient(element.id!)" class="btnDelete" matTooltip="Eliminar">delete</mat-icon>
+
+            </td>
+            </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator> -->
+
+
+      </div>
+
+    </div>
+
+  </mat-card>
+
+</div>
