@@ -111,15 +111,16 @@ export class ProductsCardAgregarEditarComponent implements OnInit {
   }
 
   onClickAceppt() {
-    console.log('On-Click');
+    console.log('On-Click', this.typeAction);
 
     if (this.typeAction == 'edit-product-card') {
       this.editProductCard();
       console.log(this.editProductCard());
     }
-    if (this.typeAction == 'product-car-new') {
+    if (this.typeAction == 'product-card-new') {
+      console.log('On-Click typeAction', this.typeAction);
       this.addProductCard();
-      console.log(this.addProductCard());
+      //console.log(this.addProductCard());
     }
   }
 
@@ -140,7 +141,7 @@ export class ProductsCardAgregarEditarComponent implements OnInit {
     console.log(productsCard);
 
     this.loading = true;
-    this._accountService.saveAccount(productsCard).subscribe(() => {
+    this._productCardService.saveProductCard(productsCard).subscribe(() => {
       // this.loading = false;
       console.log('Product-Card Agregado');
       this.loading = false;
