@@ -92,7 +92,7 @@ export class ListClientPageComponent implements OnInit, AfterViewInit {
     });
   }
 
-  editUsuario(oData: any) {
+  editClient(oData: any) {
     oData['type'] = 'edit-client';
     const dialogRef = this.dialog.open(ClientsAgregarEditarComponent, {
       width: '550px',

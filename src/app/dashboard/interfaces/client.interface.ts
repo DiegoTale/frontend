@@ -5,7 +5,4 @@ export interface ClientInterface {
   email?: string;
   phone?: string;
   active?: string;
-  // userIdCreated?: number;
-  // created: Date;
-  // updated: Date;
 }

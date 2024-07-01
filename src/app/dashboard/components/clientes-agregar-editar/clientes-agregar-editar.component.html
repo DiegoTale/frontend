@@ -3,36 +3,67 @@
 <form [formGroup]="myFormClient">
   <mat-dialog-content>
     <div *ngIf="!loading" class="row">
-
       <div class="column">
         <mat-form-field appearance="fill">
           <mat-label>Nombre</mat-label>
-          <input formControlName="name" matInput placeholder="Ingrese Nombre" autocomplete="off">
+          <input
+            formControlName="name"
+            matInput
+            placeholder="Ingrese Nombre"
+            autocomplete="off"
+          />
         </mat-form-field>
         <div class="error">
-          <span *ngIf="myFormClient.get('name')?.hasError('required') && myFormClient.get('name')?.touched">El nombre es un campo <strong>requerido</strong></span>
+          <span
+            *ngIf="
+              myFormClient.get('name')?.hasError('required') &&
+              myFormClient.get('name')?.touched
+            "
+            >El nombre es un campo <strong>requerido</strong></span
+          >
         </div>
       </div>
 
       <div class="column">
         <mat-form-field appearance="fill">
           <mat-label>Apellido</mat-label>
-          <input formControlName="lastname" matInput placeholder="Ingrese Nombre" autocomplete="off">
+          <input
+            formControlName="lastname"
+            matInput
+            placeholder="Ingrese Nombre"
+            autocomplete="off"
+          />
         </mat-form-field>
         <div class="error">
-          <span *ngIf="myFormClient.get('lastname')?.hasError('required') && myFormClient.get('lastname')?.touched">El apellido es un campo <strong>requerido</strong></span>
+          <span
+            *ngIf="
+              myFormClient.get('lastname')?.hasError('required') &&
+              myFormClient.get('lastname')?.touched
+            "
+            >El apellido es un campo <strong>requerido</strong></span
+          >
         </div>
       </div>
-
     </div>
     <div class="row">
       <div class="column">
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
-          <input formControlName="email" matInput placeholder="Ingrese correo" autocomplete="off">
+          <input
+            formControlName="email"
+            matInput
+            placeholder="Ingrese correo"
+            autocomplete="off"
+          />
         </mat-form-field>
         <div class="error">
-          <span *ngIf="myFormClient.get('email')?.hasError('required') && myFormClient.get('email')?.touched">El correo es un campo <strong>requerido</strong></span>
+          <span
+            *ngIf="
+              myFormClient.get('email')?.hasError('required') &&
+              myFormClient.get('email')?.touched
+            "
+            >El correo es un campo <strong>requerido</strong></span
+          >
         </div>
       </div>
     </div>
@@ -41,35 +72,45 @@
       <div class="column">
         <mat-form-field appearance="fill">
           <mat-label>Phone</mat-label>
-          <input formControlName="phone" matInput placeholder="Ingrese numero de telefono" autocomplete="off">
+          <input
+            formControlName="phone"
+            matInput
+            placeholder="Ingrese numero de telefono"
+            autocomplete="off"
+          />
         </mat-form-field>
         <div class="error">
-          <span *ngIf="myFormClient.get('phone')?.hasError('required') && myFormClient.get('phone')?.touched">La direccion es un campo <strong>requerido</strong></span>
+          <span
+            *ngIf="
+              myFormClient.get('phone')?.hasError('required') &&
+              myFormClient.get('phone')?.touched
+            "
+            >El numero de telefono es un campo <strong>requerido</strong></span
+          >
         </div>
       </div>
     </div>
 
-
-      <div class="column">
-        <mat-form-field appearance="fill">
-          <mat-label>Estado</mat-label>
-          <mat-select formControlName="active">
-            <mat-option *ngFor="let item of active" [value]="item">
-              {{item}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-
-
+    <div class="column">
+      <mat-form-field appearance="fill">
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="active">
+          <mat-option *ngFor="let item of active" [value]="item">
+            {{ item }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button type="button" (click)="cancelar()" mat-button>Cancelar</button>
-    <button [disabled]="myFormClient.invalid" type="submit" (click)="onClickAceppt()" mat-button>Aceptar</button>
-
+    <button
+      [disabled]="myFormClient.invalid"
+      type="submit"
+      (click)="onClickAceppt()"
+      mat-button
+    >
+      Aceptar
+    </button>
   </mat-dialog-actions>
 </form>
-
-
-

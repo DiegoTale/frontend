@@ -10,25 +10,30 @@ import { ClientsAgregarEditarComponent } from '../../../components/clientes-agre
 import { AccountInterface } from '../../../interfaces/account.interface';
 import { AccountService } from '../../../services/account.service';
 import { AccountsAgregarEditarComponent } from '../../../components/accounts-agregar-editar/accounts-agregar-editar.component';
+import { ProductCardsInterface } from '../../../interfaces/products-cards.interface';
 
 @Component({
-  selector: 'app-list-account-page',
-  templateUrl: './list-account-page.component.html',
-  styleUrls: ['./list-account-page.component.css'],
+  selector: 'app-list-product-card-page',
+  templateUrl: './list-product-card-page.component.html',
+  styleUrls: ['./list-product-card.page.component.css'],
 })
-export class ListAccountPageComponent implements OnInit, AfterViewInit {
-  public accounts: AccountInterface[] = [];
+export class ListProductCardPageComponent implements OnInit, AfterViewInit {
+  public accounts: ProductCardsInterface[] = [];
   loading: boolean = false;
 
   displayedColumns: string[] = [
     'id',
-    'client_id',
+    'account_id',
+    'type',
     'number',
-    // 'status',
+    'expire_month',
+    'expire_year',
+    'cvv',
+    'amount',
     'active',
     'acciones',
   ];
-  dataSource!: MatTableDataSource<AccountInterface>;
+  dataSource!: MatTableDataSource<ProductCardsInterface>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

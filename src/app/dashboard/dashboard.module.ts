@@ -6,21 +6,23 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
 import { ListClientPageComponent } from './pages/clients/list-client-page/list-client-page.component';
 import { ListUserPageComponent } from './pages/users/list-user-page/list-user-page.component';
 import { MaterialModule } from '../material/material.module';
-import { NewAccountPageComponent } from './pages/accounts/new-account-page/new-account-page.component';
 import { ListAccountPageComponent } from './pages/accounts/list-account-page/list-account-page.component';
 import { UsuariosAgregarEditarComponent } from './components/usuarios-agregar-editar/usuarios-agregar-editar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ClientsAgregarEditarComponent } from './components/clientes-agregar-editar/clientes-agregar-editar.component';
+import { AccountsAgregarEditarComponent } from './components/accounts-agregar-editar/accounts-agregar-editar.component';
+import { ListProductCardPageComponent } from './pages/products-cards/list-product-card-page/list-product-card.page.component';
 
 @NgModule({
   declarations: [
     DashboardLayoutComponent,
     ListClientPageComponent,
     ListUserPageComponent,
-    NewAccountPageComponent,
     ListAccountPageComponent,
+    ListProductCardPageComponent,
     UsuariosAgregarEditarComponent,
     ClientsAgregarEditarComponent,
+    AccountsAgregarEditarComponent,
   ],
   imports: [
     CommonModule,

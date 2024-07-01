@@ -8,24 +8,34 @@ import { Component } from '@angular/core';
 export class DashboardLayoutComponent {
   public sidebarItems = [
     {
-      label: 'Agregar usuario',
+      label: 'Usuarios',
       icon: 'account_circle',
       url: './list-user',
     },
     {
-      label: 'Crear Cuenta Bancaria',
-      icon: 'account_balance',
-      url: './list-account',
-    },
-    {
-      label: 'Cliente',
+      label: 'Clientes',
       icon: 'person_add',
       url: './list-client',
     },
     {
-      label: 'Transaccion',
+      label: 'Cuentas Bancarias',
+      icon: 'account_balance',
+      url: './list-account',
+    },
+    {
+      label: 'Productos',
+      icon: 'products',
+      url: './list-product-card',
+    },
+    {
+      label: 'Transacciones',
       icon: 'payments',
       url: './list-transaction',
+    },
+    {
+      label: 'Reportes',
+      icon: 'partner_reports',
+      url: './list-report',
     },
   ];
 }

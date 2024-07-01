@@ -1,0 +1,63 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+<h2 mat-dialog-title>{{ operacion }} Cuenta Bancaria</h2>
+<form [formGroup]="myFormAccount">
+  <mat-dialog-content>
+    <div *ngIf="!loading" class="row">
+      <div class="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Cliente</mat-label>
+          <mat-select formControlName="client_id">
+            <mat-option *ngFor="let item of listClients" [value]="item.id">
+              {{ item.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Número de cuenta</mat-label>
+          <input
+            formControlName="number"
+            matInput
+            placeholder="Ingrese el número de cuenta bancaria"
+            autocomplete="off"
+          />
+        </mat-form-field>
+        <div class="error">
+          <span
+            *ngIf="
+              myFormAccount.get('number')?.hasError('required') &&
+              myFormAccount.get('number')?.touched
+            "
+            >El número de cuenta bancaria es un campo
+            <strong>requerido</strong></span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <mat-form-field appearance="fill">
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="active">
+          <mat-option *ngFor="let item of active" [value]="item">
+            {{ item }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button type="button" (click)="cancelar()" mat-button>Cancelar</button>
+    <button
+      [disabled]="myFormAccount.invalid"
+      type="submit"
+      (click)="onClickAceppt()"
+      mat-button
+    >
+      Aceptar
+    </button>
+  </mat-dialog-actions>
+</form>
