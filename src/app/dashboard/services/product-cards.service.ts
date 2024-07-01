@@ -16,17 +16,17 @@ export class ProductCardsService {
     this.myApiUrl = '/api/products-cards';
   }
 
-  getAccounts(): Observable<ProductCardsInterface[]> {
+  getProductsCard(): Observable<ProductCardsInterface[]> {
     return this.http.get<ProductCardsInterface[]>(
       `${this.myAppUrlBase}${this.myApiUrl}`
     );
   }
 
-  deleteAccount(id: number): Observable<void> {
+  deleteProductCard(id: number): Observable<void> {
     return this.http.delete<void>(`${this.myAppUrlBase}${this.myApiUrl}/${id}`);
   }
 
-  saveAccount(
+  saveProductCard(
     account: ProductCardsInterface
   ): Observable<ProductCardsInterface[]> {
     return this.http.post<ProductCardsInterface[]>(
@@ -35,13 +35,13 @@ export class ProductCardsService {
     );
   }
 
-  updateAccount(
+  updateProductCard(
     id: String,
-    account: ProductCardsInterface
+    productsCard: ProductCardsInterface
   ): Observable<ProductCardsInterface[]> {
     return this.http.patch<ProductCardsInterface[]>(
       `${this.myAppUrlBase}${this.myApiUrl}/${id}`,
-      account
+      productsCard
     );
   }
 }

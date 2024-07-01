@@ -1,0 +1,175 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+<h2 mat-dialog-title>{{ operacion }} Cuenta Bancaria</h2>
+<form [formGroup]="myFormProductCard">
+  <mat-dialog-content>
+    <div *ngIf="!loading" class="row">
+      <div class="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Número de cuenta</mat-label>
+          <mat-select formControlName="account_id">
+            <mat-option *ngFor="let item of listAccounts" [value]="item.id">
+              {{ item.number }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo</mat-label>
+          <input
+            formControlName="type"
+            matInput
+            placeholder="Ingrese el tipo de tarjeta"
+            autocomplete="off"
+          />
+        </mat-form-field>
+        <div class="error">
+          <span
+            *ngIf="
+              myFormProductCard.get('type')?.hasError('required') &&
+              myFormProductCard.get('type')?.touched
+            "
+            >El tipo de tarjeta es un campo <strong>requerido</strong></span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- <div *ngIf="!loading" class="row"> -->
+    <div class="column">
+      <mat-form-field appearance="fill">
+        <mat-label>Número de tarjeta</mat-label>
+        <input
+          formControlName="number"
+          matInput
+          placeholder="Ingrese el tipo de tarjeta"
+          autocomplete="off"
+        />
+      </mat-form-field>
+      <div class="error">
+        <span
+          *ngIf="
+            myFormProductCard.get('number')?.hasError('required') &&
+            myFormProductCard.get('number')?.touched
+          "
+          >El tipo de tarjeta es un campo <strong>requerido</strong></span
+        >
+      </div>
+    </div>
+    <!-- </div> -->
+
+    <!-- <div class="row"> -->
+    <div class="column">
+      <mat-form-field appearance="fill">
+        <mat-label>Mes de Vencimiento</mat-label>
+        <input
+          formControlName="expire_month"
+          matInput
+          placeholder="Mes de Vencimiento"
+          autocomplete="off"
+        />
+      </mat-form-field>
+      <div class="error">
+        <span
+          *ngIf="
+            myFormProductCard.get('expire_month')?.hasError('required') &&
+            myFormProductCard.get('expire_month')?.touched
+          "
+          >El mes de vencimiento es un campo <strong>requerido</strong></span
+        >
+      </div>
+    </div>
+    <!-- </div> -->
+
+    <div class="column">
+      <mat-form-field appearance="fill">
+        <mat-label>Año de Vencimiento</mat-label>
+        <input
+          formControlName="expire_year"
+          matInput
+          placeholder="Año de Vencimiento"
+          autocomplete="off"
+        />
+      </mat-form-field>
+      <div class="error">
+        <span
+          *ngIf="
+            myFormProductCard.get('expire_year')?.hasError('required') &&
+            myFormProductCard.get('expire_year')?.touched
+          "
+          >El año de vencimiento es un campo <strong>requerido</strong></span
+        >
+      </div>
+    </div>
+
+    <!-- <div class="row"> -->
+    <div class="column">
+      <mat-form-field appearance="fill">
+        <mat-label>Código de Vencimiento</mat-label>
+        <input
+          formControlName="cvv"
+          matInput
+          placeholder="Ingrese numero de telefono"
+          autocomplete="off"
+        />
+      </mat-form-field>
+      <div class="error">
+        <span
+          *ngIf="
+            myFormProductCard.get('cvv')?.hasError('required') &&
+            myFormProductCard.get('cvv')?.touched
+          "
+          >El código de vencimiento es un campo <strong>requerido</strong></span
+        >
+      </div>
+    </div>
+    <!-- </div> -->
+
+    <!-- <div class="row"> -->
+    <div class="column">
+      <mat-form-field appearance="fill">
+        <mat-label>Saldo</mat-label>
+        <input
+          formControlName="amount"
+          matInput
+          placeholder="Ingrese numero de telefono"
+          autocomplete="off"
+        />
+      </mat-form-field>
+      <div class="error">
+        <span
+          *ngIf="
+            myFormProductCard.get('amount')?.hasError('required') &&
+            myFormProductCard.get('amount')?.touched
+          "
+          >El año es un campo <strong>requerido</strong></span
+        >
+      </div>
+    </div>
+    <!-- </div> -->
+
+    <div class="column">
+      <mat-form-field appearance="fill">
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="active">
+          <mat-option *ngFor="let item of active" [value]="item">
+            {{ item }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button type="button" (click)="cancelar()" mat-button>Cancelar</button>
+    <button
+      [disabled]="myFormProductCard.invalid"
+      type="submit"
+      (click)="onClickAceppt()"
+      mat-button
+    >
+      Aceptar
+    </button>
+  </mat-dialog-actions>
+</form>

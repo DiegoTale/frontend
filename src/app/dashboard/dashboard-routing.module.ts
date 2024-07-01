@@ -8,6 +8,7 @@ import { ClientsAgregarEditarComponent } from './components/clientes-agregar-edi
 import { ListAccountPageComponent } from './pages/accounts/list-account-page/list-account-page.component';
 import { AccountsAgregarEditarComponent } from './components/accounts-agregar-editar/accounts-agregar-editar.component';
 import { ListProductCardPageComponent } from './pages/products-cards/list-product-card-page/list-product-card.page.component';
+import { ProductsCardAgregarEditarComponent } from './components/products-card-agregar-editar/products-card-agregar-editar.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,14 @@ const routes: Routes = [
       { path: 'account-new', component: AccountsAgregarEditarComponent },
       { path: 'edit-account', component: AccountsAgregarEditarComponent },
       { path: 'list-product-card', component: ListProductCardPageComponent },
+      {
+        path: 'product-car-new',
+        component: ProductsCardAgregarEditarComponent,
+      },
+      {
+        path: 'edit-product-card',
+        component: ProductsCardAgregarEditarComponent,
+      },
     ],
   },
 ];

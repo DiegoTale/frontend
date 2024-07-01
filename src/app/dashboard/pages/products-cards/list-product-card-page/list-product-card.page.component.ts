@@ -4,13 +4,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
-import { ClientInterface } from '../../../interfaces/client.interface';
-import { ClientService } from '../../../services/client.service';
-import { ClientsAgregarEditarComponent } from '../../../components/clientes-agregar-editar/clientes-agregar-editar.component';
 import { AccountInterface } from '../../../interfaces/account.interface';
 import { AccountService } from '../../../services/account.service';
-import { AccountsAgregarEditarComponent } from '../../../components/accounts-agregar-editar/accounts-agregar-editar.component';
 import { ProductCardsInterface } from '../../../interfaces/products-cards.interface';
+import { ProductCardsService } from '../../../services/product-cards.service';
+import { ProductsCardAgregarEditarComponent } from '../../../components/products-card-agregar-editar/products-card-agregar-editar.component';
 
 @Component({
   selector: 'app-list-product-card-page',
@@ -18,7 +16,7 @@ import { ProductCardsInterface } from '../../../interfaces/products-cards.interf
   styleUrls: ['./list-product-card.page.component.css'],
 })
 export class ListProductCardPageComponent implements OnInit, AfterViewInit {
-  public accounts: ProductCardsInterface[] = [];
+  public productsCard: ProductCardsInterface[] = [];
   loading: boolean = false;
 
   displayedColumns: string[] = [
@@ -39,21 +37,19 @@ export class ListProductCardPageComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   // Aca declaramos las variables para almacenar la lista y usar combobox
-  listClients: Array<ClientInterface> = [];
+  listAccounts: Array<AccountInterface> = [];
 
   constructor(
-    private _accountService: AccountService,
+    private _productsCardsService: ProductCardsService,
     public dialog: MatDialog,
-    private _listClients: ClientService
+    private _listAccounts: AccountService
   ) {
-    this.dataSource = new MatTableDataSource(this.accounts);
+    this.dataSource = new MatTableDataSource(this.productsCard);
   }
 
   ngOnInit(): void {
+    this.getProductsCard();
     this.getAccounts();
-    this.getClients();
-    // this.getClientsName(2);
-    // console.log(this.getClientsName(2));
   }
 
   objectKeys(objeto: any) {
@@ -61,46 +57,48 @@ export class ListProductCardPageComponent implements OnInit, AfterViewInit {
     return values;
   }
 
-  getClients() {
-    this._listClients.getClients().subscribe((dataPrese: ClientInterface[]) => {
-      console.log(dataPrese);
-      this.listClients = dataPrese;
-      console.log(this.listClients);
+  getAccounts() {
+    this._listAccounts
+      .getAccounts()
+      .subscribe((dataPrese: AccountInterface[]) => {
+        console.log(dataPrese);
+        this.listAccounts = dataPrese;
+        console.log(this.listAccounts);
 
-      console.log(this.listClients);
-    });
+        console.log(this.listAccounts);
+      });
   }
 
-  getAccounts() {
+  getProductsCard() {
     this.loading = true;
-    this._accountService.getAccounts().subscribe((data: any) => {
-      this.accounts = data;
+    this._productsCardsService.getProductsCard().subscribe((data: any) => {
+      this.productsCard = data;
       console.log(data);
       this.loading = false;
-      this.dataSource = new MatTableDataSource(this.accounts);
+      this.dataSource = new MatTableDataSource(this.productsCard);
     });
   }
 
-  getClientsName(codigo: number) {
-    let nameClient;
+  getNumberAccount(codigo: number) {
+    let numberAccount;
 
     //Opcion #1
-    this.listClients.forEach((data) => {
+    this.listAccounts.forEach((data) => {
       if (data.id == codigo) {
-        nameClient = data.name;
+        numberAccount = data.number;
       }
     });
 
-    return nameClient;
+    return numberAccount;
   }
 
-  deleteAccount(id: number) {
+  deleteProductCard(id: number) {
     this.loading = true;
-    this._accountService.deleteAccount(id).subscribe(() => {
-      this.getAccounts();
+    this._productsCardsService.deleteProductCard(id).subscribe(() => {
+      this.getProductsCard();
       Swal.fire(
         'Eliminado',
-        'El cliente ha sido eliminado con exito',
+        'El producto ha sido eliminado con exito',
         'question'
       );
     });
@@ -120,10 +118,10 @@ export class ListProductCardPageComponent implements OnInit, AfterViewInit {
     }
   }
 
-  addEditAccount() {
-    let oData = { type: 'account-new' };
+  addEditProductCard() {
+    let oData = { type: 'product-card-new' };
     const dialogRef = this.dialog.open(
-      AccountsAgregarEditarComponent /** Pendiente a cambiar */,
+      ProductsCardAgregarEditarComponent /** Pendiente a cambiar */,
       {
         width: '550px',
         disableClose: true,
@@ -132,14 +130,14 @@ export class ListProductCardPageComponent implements OnInit, AfterViewInit {
     );
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.getAccounts();
+      this.getProductsCard();
     });
   }
 
-  editAccount(oData: any) {
-    oData['type'] = 'edit-account';
+  editProductCard(oData: any) {
+    oData['type'] = 'edit-product-card';
     const dialogRef = this.dialog.open(
-      AccountsAgregarEditarComponent /** Pendiente a cambiar */,
+      ProductsCardAgregarEditarComponent /** Pendiente a cambiar */,
       {
         width: '550px',
         disableClose: true,
@@ -148,11 +146,11 @@ export class ListProductCardPageComponent implements OnInit, AfterViewInit {
     );
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.getAccounts();
+      this.getProductsCard();
       console.log('The dialog was closed');
       Swal.fire(
         'Editado',
-        'El cliente ha sido modificado con exito' /** Pendiente a cambiar */,
+        'El producto ha sido modificado con exito' /** Pendiente a cambiar */,
         'success'
       );
     });

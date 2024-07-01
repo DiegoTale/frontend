@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ClientsAgregarEditarComponent } from './components/clientes-agregar-editar/clientes-agregar-editar.component';
 import { AccountsAgregarEditarComponent } from './components/accounts-agregar-editar/accounts-agregar-editar.component';
 import { ListProductCardPageComponent } from './pages/products-cards/list-product-card-page/list-product-card.page.component';
+import { ProductsCardAgregarEditarComponent } from './components/products-card-agregar-editar/products-card-agregar-editar.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ListProductCardPageComponent } from './pages/products-cards/list-produc
     UsuariosAgregarEditarComponent,
     ClientsAgregarEditarComponent,
     AccountsAgregarEditarComponent,
+    ProductsCardAgregarEditarComponent,
   ],
   imports: [
     CommonModule,

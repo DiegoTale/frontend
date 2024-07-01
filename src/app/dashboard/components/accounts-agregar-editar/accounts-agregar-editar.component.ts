@@ -142,7 +142,7 @@ export class AccountsAgregarEditarComponent implements OnInit {
 
     this._accountService.updateAccount(id, account).subscribe((data) => {
       console.log(data);
-      console.log('Cliente Agregado');
+      console.log('Cuenta Agregado');
       this.loading = false;
       this.dialogRef.close();
     });
