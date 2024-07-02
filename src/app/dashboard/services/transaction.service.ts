@@ -29,6 +29,8 @@ export class TransactionService {
   saveTransaction(
     account: TransactionInterface
   ): Observable<TransactionInterface[]> {
+    console.log('account', account);
+
     return this.http.post<TransactionInterface[]>(
       `${this.myAppUrlBase}${this.myApiUrl}`,
       account

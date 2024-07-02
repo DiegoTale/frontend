@@ -28,7 +28,7 @@ export class TransactionAgregarEditarComponent implements OnInit {
     public data: any,
     private _transactionService: TransactionService,
     private _productCardService: ProductCardsService // private _accountService: AccountService // private _clientService: ClientService
-  ) {}
+  ) { }
 
   private fb = inject(FormBuilder);
   public myFormTransaction: FormGroup = this.fb.group({
@@ -109,7 +109,7 @@ export class TransactionAgregarEditarComponent implements OnInit {
 
     if (this.typeAction == 'edit-transaction') {
       this.editTransaction();
-      console.log(this.editTransaction());
+      //console.log(this.editTransaction());
     }
     if (this.typeAction == 'transaction-new') {
       // console.log('On-Click typeAction', this.typeAction);
@@ -119,24 +119,22 @@ export class TransactionAgregarEditarComponent implements OnInit {
   }
 
   addTransaction() {
-    console.log('add product-card');
+    console.log('mike add product-card  jueve', this.myFormTransaction);
 
-    const transaction = {
-      product_cards_id_sender:
-        this.myFormTransaction.controls['product_cards_id_sender'].value,
-      product_cards_id_reciver:
-        this.myFormTransaction.controls['product_cards_id_reciver'].value,
+    const transactionTest = {
+      product_cards_id_sender: this.myFormTransaction.controls['product_cards_id_sender'].value,
+      product_cards_id_reciver: this.myFormTransaction.controls['product_cards_id_reciver'].value,
       description: this.myFormTransaction.controls['description'].value,
-      // deferred_frecuency: this.myFormTransaction.controls['deferred_frecuency'].value,
-      expire_year: this.myFormTransaction.controls['expire_year'].value,
+      //expire_year: this.myFormTransaction.controls['expire_year'].value,
       amount: this.myFormTransaction.controls['amount'].value,
-      active:
-        this.myFormTransaction.controls['active'].value == true ? '1' : '0',
+      active: this.myFormTransaction.controls['active'].value == true ? '1' : '0',
     };
-    console.log(transaction);
+
+    //console.log('sistemas', transactionTest);
 
     this.loading = true;
-    this._productCardService.saveProductCard(transaction).subscribe(() => {
+    this._transactionService.saveTransaction(transactionTest).subscribe((datos) => {
+      console.log('datos', datos);
       // this.loading = false;
       console.log('Transaction Agregado');
       this.loading = false;
