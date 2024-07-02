@@ -22,6 +22,7 @@ export class ListProductCardPageComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
     'id',
     'account_id',
+    'client',
     'type',
     'number',
     'expire_month',

@@ -24,6 +24,8 @@ export class ListTransactionPageComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = [
     'id',
+    'account_send',
+    'product_type',
     'product_cards_id_sender',
     'product_cards_id_reciver',
     'description',
