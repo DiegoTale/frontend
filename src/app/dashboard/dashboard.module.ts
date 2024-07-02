@@ -13,6 +13,8 @@ import { ClientsAgregarEditarComponent } from './components/clientes-agregar-edi
 import { AccountsAgregarEditarComponent } from './components/accounts-agregar-editar/accounts-agregar-editar.component';
 import { ListProductCardPageComponent } from './pages/products-cards/list-product-card-page/list-product-card.page.component';
 import { ProductsCardAgregarEditarComponent } from './components/products-card-agregar-editar/products-card-agregar-editar.component';
+import { ListTransactionPageComponent } from './pages/transactions/list-transaction-page/list-transaction.page.component';
+import { TransactionAgregarEditarComponent } from './components/transactions-agregar-editar/transactions-agregar-editar.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +23,12 @@ import { ProductsCardAgregarEditarComponent } from './components/products-card-a
     ListUserPageComponent,
     ListAccountPageComponent,
     ListProductCardPageComponent,
+    ListTransactionPageComponent,
     UsuariosAgregarEditarComponent,
     ClientsAgregarEditarComponent,
     AccountsAgregarEditarComponent,
     ProductsCardAgregarEditarComponent,
+    TransactionAgregarEditarComponent,
   ],
   imports: [
     CommonModule,

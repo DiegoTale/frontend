@@ -24,7 +24,7 @@ export class DashboardLayoutComponent {
     },
     {
       label: 'Productos',
-      icon: 'products',
+      icon: 'category',
       url: './list-product-card',
     },
     {
