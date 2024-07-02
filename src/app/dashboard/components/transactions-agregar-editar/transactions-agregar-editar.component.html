@@ -2,79 +2,73 @@
 <h2 mat-dialog-title>{{ operacion }} Transacciones</h2>
 <form [formGroup]="myFormTransaction">
   <mat-dialog-content>
-    <div *ngIf="!loading" class="row">
-      <div class="column">
-        <mat-form-field appearance="fill">
-          <mat-label>Número de cuenta emisor</mat-label>
-          <mat-select formControlName="product_cards_id_sender">
-            <mat-option
-              *ngFor="let item of listProductsCards"
-              [value]="item.id"
-            >
-              {{ item.number }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+    <!-- <div *ngIf="!loading" class="row"> -->
+    <div class="column">
+      <mat-form-field appearance="fill">
+        <mat-label>Número de cuenta emisor</mat-label>
+        <mat-select formControlName="product_cards_id_sender">
+          <mat-option *ngFor="let item of listProductsCards" [value]="item.id">
+            {{ item.number }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
-      <div class="column">
-        <mat-form-field appearance="fill">
-          <mat-label>Número de cuenta receptor</mat-label>
-          <mat-select formControlName="product_cards_id_reciver">
-            <mat-option
-              *ngFor="let item of listProductsCards"
-              [value]="item.id"
-            >
-              {{ item.number }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+    <div class="column">
+      <mat-form-field appearance="fill">
+        <mat-label>Número de cuenta receptor</mat-label>
+        <mat-select formControlName="product_cards_id_reciver">
+          <mat-option *ngFor="let item of listProductsCards" [value]="item.id">
+            {{ item.number }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- </div> -->
+
+    <!-- <div *ngIf="!loading" class="row"> -->
+    <div class="column">
+      <mat-form-field appearance="fill">
+        <mat-label>Descripción</mat-label>
+        <input
+          formControlName="description"
+          matInput
+          placeholder="Ingrese una breve descripción"
+          autocomplete="off"
+        />
+      </mat-form-field>
+      <div class="error">
+        <span
+          *ngIf="
+            myFormTransaction.get('description')?.hasError('required') &&
+            myFormTransaction.get('description')?.touched
+          "
+          >La descripción es un campo <strong>requerido</strong></span
+        >
       </div>
     </div>
 
-    <div *ngIf="!loading" class="row">
-      <div class="column">
-        <mat-form-field appearance="fill">
-          <mat-label>Descripción</mat-label>
-          <input
-            formControlName="description"
-            matInput
-            placeholder="Ingrese una breve descripción"
-            autocomplete="off"
-          />
-        </mat-form-field>
-        <div class="error">
-          <span
-            *ngIf="
-              myFormTransaction.get('description')?.hasError('required') &&
-              myFormTransaction.get('description')?.touched
-            "
-            >La descripción es un campo <strong>requerido</strong></span
-          >
-        </div>
-      </div>
-
-      <div class="column">
-        <mat-form-field appearance="fill">
-          <mat-label>Monto</mat-label>
-          <input
-            formControlName="amount"
-            matInput
-            placeholder="Ingrese numero de telefono"
-            autocomplete="off"
-          />
-        </mat-form-field>
-        <div class="error">
-          <span
-            *ngIf="
-              myFormTransaction.get('amount')?.hasError('required') &&
-              myFormTransaction.get('amount')?.touched
-            "
-            >El año es un campo <strong>requerido</strong></span
-          >
-        </div>
+    <div class="column">
+      <mat-form-field appearance="fill">
+        <mat-label>Monto</mat-label>
+        <input
+          formControlName="amount"
+          matInput
+          placeholder="Ingrese numero de telefono"
+          autocomplete="off"
+        />
+      </mat-form-field>
+      <div class="error">
+        <span
+          *ngIf="
+            myFormTransaction.get('amount')?.hasError('required') &&
+            myFormTransaction.get('amount')?.touched
+          "
+          >El año es un campo <strong>requerido</strong></span
+        >
       </div>
     </div>
+    <!-- </div> -->
     <!-- </div> -->
 
     <div class="column">
