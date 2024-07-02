@@ -11,6 +11,7 @@ import { ListProductCardPageComponent } from './pages/products-cards/list-produc
 import { ProductsCardAgregarEditarComponent } from './components/products-card-agregar-editar/products-card-agregar-editar.component';
 import { ListTransactionPageComponent } from './pages/transactions/list-transaction-page/list-transaction.page.component';
 import { TransactionAgregarEditarComponent } from './components/transactions-agregar-editar/transactions-agregar-editar.component';
+import { ListReportPageComponent } from './pages/reports/list-report-page/list-report.page.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,7 @@ const routes: Routes = [
         path: 'edit-transaction',
         component: TransactionAgregarEditarComponent,
       },
+      { path: 'list-report', component: ListReportPageComponent },
     ],
   },
 ];

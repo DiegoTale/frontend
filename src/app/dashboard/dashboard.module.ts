@@ -15,6 +15,7 @@ import { ListProductCardPageComponent } from './pages/products-cards/list-produc
 import { ProductsCardAgregarEditarComponent } from './components/products-card-agregar-editar/products-card-agregar-editar.component';
 import { ListTransactionPageComponent } from './pages/transactions/list-transaction-page/list-transaction.page.component';
 import { TransactionAgregarEditarComponent } from './components/transactions-agregar-editar/transactions-agregar-editar.component';
+import { ListReportPageComponent } from './pages/reports/list-report-page/list-report.page.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { TransactionAgregarEditarComponent } from './components/transactions-agr
     AccountsAgregarEditarComponent,
     ProductsCardAgregarEditarComponent,
     TransactionAgregarEditarComponent,
+    ListReportPageComponent,
   ],
   imports: [
     CommonModule,
