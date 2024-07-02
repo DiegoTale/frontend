@@ -68,8 +68,8 @@ export class TransactionAgregarEditarComponent implements OnInit {
   listProductsCards: any = this.data;
   getProductsCard() {
     this._productCardService.getProductsCard().subscribe((data) => {
-      this.listProductsCards;
-      console.log('data', data);
+      this.listProductsCards = data;
+      console.log('data mie', data);
       console.log('this.listProductsCards', this.listProductsCards);
     });
   }
