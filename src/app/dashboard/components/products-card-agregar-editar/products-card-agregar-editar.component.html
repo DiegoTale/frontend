@@ -141,7 +141,7 @@
         <input
           formControlName="amount"
           matInput
-          placeholder="Ingrese numero de telefono"
+          placeholder="Ingrese el monto del saldo"
           autocomplete="off"
         />
       </mat-form-field>
@@ -152,6 +152,27 @@
             myFormProductCard.get('amount')?.touched
           "
           >El año es un campo <strong>requerido</strong></span
+        >
+      </div>
+    </div>
+
+    <div class="column">
+      <mat-form-field appearance="fill">
+        <mat-label>limite de credito</mat-label>
+        <input
+          formControlName="limit"
+          matInput
+          placeholder="Ingrese el monto limite de credito"
+          autocomplete="off"
+        />
+      </mat-form-field>
+      <div class="error">
+        <span
+          *ngIf="
+            myFormProductCard.get('limit')?.hasError('required') &&
+            myFormProductCard.get('limit')?.touched
+          "
+          >El limite de credito <strong>requerido</strong></span
         >
       </div>
     </div>

@@ -7,6 +7,7 @@ export interface ProductCardsInterface {
   expire_year?: string;
   cvv?: string;
   amount?: number;
+  limit?: number;
   active?: string;
   // created: Date;
   // updated: Date;
