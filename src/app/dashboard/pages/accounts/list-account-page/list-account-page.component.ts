@@ -58,8 +58,12 @@ export class ListAccountPageComponent implements OnInit, AfterViewInit {
   }
 
   getAccountsAmount(products:any){
- 
-    return products.reduce((n: any, {amount}: any) => n + amount, 0)
+  
+    if(products){
+      return products.reduce((n: any, {amount}: any) => n + amount, 0)
+    }else{
+      return 0;
+    }
   }
 
   getClients() {
