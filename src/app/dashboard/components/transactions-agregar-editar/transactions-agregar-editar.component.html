@@ -19,7 +19,7 @@
         <mat-label>Número de cuenta receptor</mat-label>
         <mat-select formControlName="product_cards_id_reciver">
           <mat-option *ngFor="let item of listProductsCards" [value]="item.id">
-            {{ item.number+"  :"+ item.accounts.clients.email }}
+            {{ item.type + ": "+item.number+"  :"+ item.accounts.clients.email }}
           </mat-option>
         </mat-select>
       </mat-form-field>
