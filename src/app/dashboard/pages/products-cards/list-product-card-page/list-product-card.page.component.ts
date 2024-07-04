@@ -25,6 +25,7 @@ export class ListProductCardPageComponent implements OnInit, AfterViewInit {
     'client',
     'type',
     'number',
+    'limit',
     'expire_month',
     'expire_year',
     'cvv',

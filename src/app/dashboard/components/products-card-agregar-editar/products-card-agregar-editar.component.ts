@@ -41,6 +41,7 @@ export class ProductsCardAgregarEditarComponent implements OnInit {
     expire_month: ['', Validators.required],
     expire_year: ['', Validators.required],
     cvv: ['', Validators.required],
+    limit: ['', Validators.required],
     amount: ['', Validators.required],
     active: ['', Validators.required],
   });
@@ -101,6 +102,9 @@ export class ProductsCardAgregarEditarComponent implements OnInit {
     this.myFormProductCard
       .get('amount')
       ?.setValue(this.myDatUpdate?.amount ?? '');
+      this.myFormProductCard
+      .get('limit')
+      ?.setValue(this.myDatUpdate?.limit ?? '');
     this.myFormProductCard
       .get('active')
       ?.setValue(this.myDatUpdate?.active == '1' ? true : false);
@@ -135,6 +139,7 @@ export class ProductsCardAgregarEditarComponent implements OnInit {
       expire_year: this.myFormProductCard.controls['expire_year'].value,
       cvv: this.myFormProductCard.controls['cvv'].value,
       amount: this.myFormProductCard.controls['amount'].value,
+      limit: this.myFormProductCard.controls['limit'].value,
       active:
         this.myFormProductCard.controls['active'].value == true ? '1' : '0',
     };
@@ -160,6 +165,7 @@ export class ProductsCardAgregarEditarComponent implements OnInit {
       expire_year: this.myFormProductCard.controls['expire_year'].value,
       cvv: this.myFormProductCard.controls['cvv'].value,
       amount: this.myFormProductCard.controls['amount'].value,
+      limit: this.myFormProductCard.controls['limit'].value,
       active:
         this.myFormProductCard.controls['active'].value == true ? '1' : '0',
     };

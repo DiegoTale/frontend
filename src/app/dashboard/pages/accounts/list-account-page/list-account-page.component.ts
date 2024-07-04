@@ -23,6 +23,7 @@ export class ListAccountPageComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
     'id',
     'client_id',
+    'saldo',
     'number',
     // 'status',
     'ammount_initial',
@@ -55,6 +56,15 @@ export class ListAccountPageComponent implements OnInit, AfterViewInit {
   objectKeys(objeto: any) {
     const values = Object.values(objeto);
     return values;
+  }
+
+  getAccountsAmount(products:any){
+  
+    if(products){
+      return products.reduce((n: any, {amount}: any) => n + amount, 0)
+    }else{
+      return 0;
+    }
   }
 
   getClients() {
