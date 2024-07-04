@@ -26,7 +26,7 @@ export class ListAccountPageComponent implements OnInit, AfterViewInit {
     'saldo',
     'number',
     // 'status',
-    'ammount_initial',
+    //'ammount_initial',
     'active',
     'acciones',
   ];
