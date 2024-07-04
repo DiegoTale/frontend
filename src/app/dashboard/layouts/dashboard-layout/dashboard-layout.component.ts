@@ -33,11 +33,6 @@ export class DashboardLayoutComponent {
       url: './list-transaction',
     },
     {
-      label: 'Movimientos en Cuenta',
-      icon: 'partner_reports',
-      url: './list-report',
-    },
-    {
       label: 'Detalle de Transacciones',
       icon: 'partner_reports',
       url: './report-transaction-detail',
