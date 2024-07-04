@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environments } from '../../../environments/environments.page';
 import { AccountInterface } from '../interfaces/account.interface';
+import { jsPDF } from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 @Injectable({
   providedIn: 'root',

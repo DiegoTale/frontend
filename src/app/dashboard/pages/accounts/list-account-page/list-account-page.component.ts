@@ -25,6 +25,7 @@ export class ListAccountPageComponent implements OnInit, AfterViewInit {
     'client_id',
     'number',
     // 'status',
+    'ammount_initial',
     'active',
     'acciones',
   ];

@@ -36,6 +36,7 @@ export class AccountsAgregarEditarComponent implements OnInit {
   public myFormAccount: FormGroup = this.fb.group({
     client_id: ['', [Validators.required]],
     number: ['', Validators.required],
+    ammount_initial: ['', Validators.required],
     // status: ['', Validators.required],
     active: ['', Validators.required],
   });
@@ -83,7 +84,9 @@ export class AccountsAgregarEditarComponent implements OnInit {
       .get('client_id')
       ?.setValue(this.myDatUpdate?.client_id ?? '');
     this.myFormAccount.get('number')?.setValue(this.myDatUpdate?.number ?? '');
-    // this.myFormAccount.get('status')?.setValue(this.myDatUpdate?.status ?? '');
+    this.myFormAccount
+      .get('ammount_initial')
+      ?.setValue(this.myDatUpdate?.ammount_initial ?? '');
     this.myFormAccount
       .get('active')
       ?.setValue(this.myDatUpdate?.active == '1' ? true : false);
@@ -108,7 +111,7 @@ export class AccountsAgregarEditarComponent implements OnInit {
     const account = {
       client_id: this.myFormAccount.controls['client_id'].value,
       number: this.myFormAccount.controls['number'].value,
-      // status: this.myFormAccount.controls['status'].value,
+      ammount_initial: this.myFormAccount.controls['ammount_initial'].value,
       active: this.myFormAccount.controls['active'].value == true ? '1' : '0',
     };
     console.log(account);
@@ -128,7 +131,7 @@ export class AccountsAgregarEditarComponent implements OnInit {
     const account = {
       client_id: this.myFormAccount.controls['client_id'].value,
       number: this.myFormAccount.controls['number'].value,
-      // status: this.myFormAccount.controls['status'].value,
+      ammount_initial: this.myFormAccount.controls['ammount_initial'].value,
       active: this.myFormAccount.controls['active'].value == true ? '1' : '0',
     };
 

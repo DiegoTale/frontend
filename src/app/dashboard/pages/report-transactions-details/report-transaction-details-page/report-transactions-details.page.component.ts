@@ -12,60 +12,51 @@ import { ProductsCardAgregarEditarComponent } from '../../../components/products
 import { TransactionInterface } from '../../../interfaces/transactions.interface ';
 import { TransactionService } from '../../../services/transaction.service';
 import { TransactionAgregarEditarComponent } from '../../../components/transactions-agregar-editar/transactions-agregar-editar.component';
-import { TransactionReportInterface } from '../../../interfaces/transaction-report.interface ';
-import { ReportService } from '../../../services/report.service';
-import { ClientInterface } from '../../../interfaces/client.interface';
-import { ClientService } from '../../../services/client.service';
+import { ReportTransactionDetails } from '../../../interfaces/report-transaction-details.interface';
 
 @Component({
-  selector: 'app-list-report-page',
-  templateUrl: './list-report.page.component.html',
-  styleUrls: ['./list-report.page.component.css'],
+  selector: 'app-report-transaction-details-page',
+  templateUrl: './report-transactions-details.page.component.html',
+  styleUrls: ['./report-transactions-details.page.component.css'],
 })
-export class ListReportPageComponent implements OnInit, AfterViewInit {
-  public report: TransactionReportInterface[] = [];
+export class ReportTransactionDetailsPageComponent
+  implements OnInit, AfterViewInit
+{
+  public transaction: TransactionInterface[] = [];
   loading: boolean = false;
 
   displayedColumns: string[] = [
     'id',
-    'transaction_id',
-    'product_cards_id',
-    'type',
+    'account_send',
+    'product_type',
+    'product_cards_id_sender',
+    'product_cards_id_reciver',
+    'description',
+    // 'deferred_frecuency',
     'amount',
     'active',
-    'created',
-    'updated',
     'acciones',
   ];
-  dataSource!: MatTableDataSource<TransactionReportInterface>;
+  dataSource!: MatTableDataSource<TransactionInterface>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   // Aca declaramos las variables para almacenar la lista y usar combobox
-  listReports: Array<TransactionReportInterface> = [];
-  listTransactions: Array<TransactionInterface> = [];
   listProductsCard: Array<ProductCardsInterface> = [];
-  listAccounts: Array<AccountInterface> = [];
-  listClients: Array<ClientInterface> = [];
 
   constructor(
-    private _reportService: ReportService,
+    private _transactionsService: TransactionService,
     public dialog: MatDialog,
-    private _listProductsCards: ProductCardsService,
-    private _listAccounts: AccountService,
-    private _listTransactions: TransactionService,
-    private _listClients: ClientService
+    private _listProductsCards: ProductCardsService // private _listAccounts: AccountService
   ) {
-    this.dataSource = new MatTableDataSource(this.listReports);
+    this.dataSource = new MatTableDataSource(this.transaction);
   }
 
   ngOnInit(): void {
-    this.getReports();
     this.getTransactions();
     this.getProductsCard();
-    this.getAccounts();
-    this.getClients();
+    // this.getAccounts();
   }
 
   objectKeys(objeto: any) {
@@ -83,73 +74,14 @@ export class ListReportPageComponent implements OnInit, AfterViewInit {
       });
   }
 
-  getAccounts() {
-    this._listAccounts
-      .getAccounts()
-      .subscribe((dataPrese: AccountInterface[]) => {
-        console.log(dataPrese);
-        this.listAccounts = dataPrese;
-        console.log(this.listAccounts);
-
-        console.log(this.listAccounts);
-      });
-  }
-
-  getClients() {
-    this._listClients.getClients().subscribe((dataPrese: ClientInterface[]) => {
-      console.log(dataPrese);
-      this.listClients = dataPrese;
-      console.log(this.listClients);
-
-      console.log(this.listClients);
-    });
-  }
-
   getTransactions() {
-    this._listTransactions
-      .getTransactions()
-      .subscribe((dataPrese: TransactionInterface[]) => {
-        console.log(dataPrese);
-        this.listTransactions = dataPrese;
-        console.log(this.listTransactions);
-      });
-  }
-
-  //////////////
-  getReports() {
     this.loading = true;
-    this._reportService.getReports().subscribe((data: any) => {
-      this.report = data;
+    this._transactionsService.getTransactions().subscribe((data: any) => {
+      this.transaction = data;
       console.log(data);
       this.loading = false;
-      this.dataSource = new MatTableDataSource(this.report);
+      this.dataSource = new MatTableDataSource(this.transaction);
     });
-  }
-
-  getNumberAccount(codigo: number) {
-    let numberAccount;
-
-    //Opcion #1
-    this.listAccounts.forEach((data) => {
-      if (data.id == codigo) {
-        numberAccount = data.number;
-      }
-    });
-
-    return numberAccount;
-  }
-
-  getClientsName(codigo: number) {
-    let nameClient;
-
-    //Opcion #1
-    this.listClients.forEach((data) => {
-      if (data.id == codigo) {
-        nameClient = data.name;
-      }
-    });
-
-    return nameClient;
   }
 
   getNumberProduct(codigo: number) {
@@ -165,22 +97,9 @@ export class ListReportPageComponent implements OnInit, AfterViewInit {
     return numberProductCard;
   }
 
-  getTransactionName(codigo: number) {
-    let transactionName;
-
-    //Opcion #1
-    this.listTransactions.forEach((data) => {
-      if (data.id == codigo) {
-        transactionName = data.id;
-      }
-    });
-
-    return transactionName;
-  }
-
-  deleteReport(id: number) {
+  deleteTransaction(id: number) {
     this.loading = true;
-    this._reportService.deleteReport(id).subscribe(() => {
+    this._transactionsService.deleteTransaction(id).subscribe(() => {
       this.getProductsCard();
       Swal.fire(
         'Eliminado',
@@ -204,7 +123,7 @@ export class ListReportPageComponent implements OnInit, AfterViewInit {
     }
   }
 
-  addReport() {
+  addTransaction() {
     let oData = { type: 'transaction-new' };
     const dialogRef = this.dialog.open(
       TransactionAgregarEditarComponent /** Pendiente a cambiar */,
@@ -220,7 +139,7 @@ export class ListReportPageComponent implements OnInit, AfterViewInit {
     });
   }
 
-  editReport(oData: any) {
+  editTransaction(oData: any) {
     oData['type'] = 'edit-transaction';
     const dialogRef = this.dialog.open(
       TransactionAgregarEditarComponent /** Pendiente a cambiar */,

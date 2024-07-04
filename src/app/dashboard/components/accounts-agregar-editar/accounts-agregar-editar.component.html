@@ -38,6 +38,28 @@
     </div>
 
     <div class="column">
+      <div class="column">
+        <mat-form-field appearance="fill">
+          <mat-label>Saldo Inicial</mat-label>
+          <input
+            formControlName="ammount_initial"
+            matInput
+            placeholder="Ingrese el inicial"
+            autocomplete="off"
+          />
+        </mat-form-field>
+        <div class="error">
+          <span
+            *ngIf="
+              myFormAccount.get('ammount_initial')?.hasError('required') &&
+              myFormAccount.get('ammount_initial')?.touched
+            "
+            >El número de cuenta bancaria es un campo
+            <strong>requerido</strong></span
+          >
+        </div>
+      </div>
+
       <mat-form-field appearance="fill">
         <mat-label>Estado</mat-label>
         <mat-select formControlName="active">

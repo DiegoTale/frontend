@@ -2,11 +2,15 @@
   <mat-toolbar>
     <span>Clientes</span>
   </mat-toolbar>
-  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  <mat-progress-bar
+    *ngIf="loading"
+    mode="indeterminate"
+    [ngStyle]="{ width: '250px' }"
+  ></mat-progress-bar>
 
   <mat-card>
     <div>
-      <mat-form-field appearanc="standard">
+      <mat-form-field [ngStyle]="{ width: '250px' }" appearanc="standard">
         <mat-label>Filtro</mat-label>
         <input
           matInput
@@ -22,7 +26,12 @@
       </button>
 
       <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort>
+        <table
+          mat-table
+          [dataSource]="dataSource"
+          matSort
+          [ngStyle]="{ width: '250px' }"
+        >
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
             <td mat-cell *matCellDef="let element">{{ element.id }}</td>

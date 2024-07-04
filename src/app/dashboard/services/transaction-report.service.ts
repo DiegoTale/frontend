@@ -2,18 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environments } from '../../../environments/environments.page';
+import { TransactionInterface } from '../interfaces/transactions.interface ';
 import { TransactionReportInterface } from '../interfaces/transaction-report.interface ';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ReportService {
+export class TransactionService {
   private myAppUrlBase: string;
   private myApiUrl: string;
 
   constructor(private http: HttpClient) {
     this.myAppUrlBase = environments.baseUrl;
-    this.myApiUrl = '/api/reports';
+    this.myApiUrl = '/api/transactions';
   }
 
   getReports(): Observable<TransactionReportInterface[]> {

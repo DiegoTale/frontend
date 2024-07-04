@@ -40,7 +40,7 @@ export class DashboardLayoutComponent {
     {
       label: 'Detalle de Transacciones',
       icon: 'partner_reports',
-      url: './list-transaction-details',
+      url: './report-transaction-detail',
     },
   ];
 }
